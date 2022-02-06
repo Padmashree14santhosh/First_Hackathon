@@ -1,35 +1,33 @@
-let mainContainer=document.getElementById("maincontainer");
-mainContainer.innerHTML+="";
-    
+const url="http://makeup-api.herokuapp.com/api/v1/products.json";
+let userdiv=document.getElementById("users");
+userdiv.innerHTML="Loading....";
 
-const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
+async function getData(){
+   await fetch(url,{
+       method:'GET',
+   })
+   .then(result=> result.json())
+   .then((data)=>{
+       renderData(data);
+       console.log(data);
+   });
+}
 
+getData();
 
-  
-
-  async function getData(){
-    let users;
-    try{
-      const data = await fetch(url,{
-        method:"GET",
-        });
-
-      users=await data.json();
-      users.forEach((obj) => {
-        if(obj.image_link){
-        mainContainer.innerHTML+=`
-          <p>Name:${obj.name}</p>
-        <p>Brand:${obj.brand}</p>
-        <p>Price:${obj.price}${obj.price_sign}</p>
-        <p>Description:<a href="${obj.product_link}"</p>
-        <img src="${obj.image_link}" alt="makeupimage" width="600" height="600">
-        `}
-      });
-    }catch(error){
-      console.log(error);
+function renderData(data){
+    userdiv.innerHTML="";
+    let count=0;
+    for(let result of data){
+        userdiv.innerHTML+=`
+        <div class="flex" style="margin:2rem; border:2px solid red; width:500px; height:auto; text-align:center;">
+            <h4>${result.name}</h4>
+            <h5>${result.brand}</h5>
+            <img src="${result.image_link}" alt="makeup" style="width:auto; height:300px; border:2px solid pink; margin:1rem;">
+            <h5>${result.price}${result.price_sign}</h5>
+            <h6><a href="${result.product_link}">INFO</a>
+        </div>`;
+        count++;
+        if(count===20)break;
     }
-  }
-
-  getData();
-
-  
+}
