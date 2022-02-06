@@ -4,27 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakeupApi</title>
-     <style>
-      #maincontainer{
-        display: flexbox;
-        flex-flow: column;
-        margin:2px;
-        padding: 1rem;
-        align-items: center;
-      }
-      h1{
-        text-align: center;
-        color: #ffa600;
-      }
+     <title>Document</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: aqua;
+            padding:2rem;
+            margin:2rem;
+        }
+        #inputtext,#labeltext{
+            font-family:serif;
+            font-style:italic;
+            font-size: larger;
+            color: red;
+        }
+
+        #inputtext{
+            margin-top: 4rem;
+            margin-left: 4rem;
+        }
+
+        #labeltext{
+            margin:20px;
+        }
+
+        .col-6{
+            margin:2rem;
+            padding:2rem;
+        }
+        h1{
+            text-align: center;
+            font-family:cursive;
+            font-size: xx-large;
+            color: #a3169c;
+        }
+    
     </style>
 </head>
 <body>
+    <h1>Beauty</h1>
     <div class="container">
-        <h1>Beauty Products</h1>
-            <div id="maincontainer">
-            </div>
+        <div class="row" id="users">
+
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
